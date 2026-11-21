@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Differentiation: The Quotient Rule – Edexcel A-Level Maths</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<style>
+:root{--bg:#f1f5f9;--card:#fff;--soft:#f8fafc;--tx:#1e293b;--mut:#64748b;--bd:#cbd5e1;--ac:#1e1b4b;--ac2:#4338ca;--hint:#fffbeb;--hintb:#fcd34d;--stp:#eef2ff;--stpb:#c7d2fe;--ok:#ecfdf5;--okb:#059669;--bad:#fef2f2;--badb:#dc2626}
+body.dark{--bg:#0f172a;--card:#1e293b;--soft:#273449;--tx:#e2e8f0;--mut:#94a3b8;--bd:#475569;--ac:#312e81;--ac2:#a5b4fc;--hint:#3d2e07;--hintb:#92400e;--stp:#1e1b4b;--stpb:#4338ca;--ok:#06352a;--bad:#3b1212}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:'Atkinson Hyperlegible',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;line-height:1.65}
+.ui,button,select,input{font-family:system-ui,-apple-system,'Segoe UI',sans-serif}
+header{background:#1e1b4b;color:#fff;padding:20px 16px}
+.wrap{max-width:860px;margin:0 auto}
+h1{margin:0;font-size:1.7rem}header p{margin:4px 0 0;color:#c7d2fe;font-size:.9rem}
+.tools{display:flex;gap:8px;margin-top:12px}.tools button{background:none;color:#fff;border:1px solid #a5b4fc;border-radius:6px;padding:4px 12px;font-size:.75rem;cursor:pointer}
+nav{background:var(--card);border-bottom:1px solid var(--bd);position:sticky;top:0;z-index:5}
+nav .wrap{display:flex;gap:8px;padding:8px}
+.tab{flex:1;border:0;border-radius:6px;padding:9px 4px;font-size:.88rem;font-weight:600;background:var(--bg);color:var(--tx);cursor:pointer}
+.tab.on{background:var(--ac);color:#fff}
+main{max-width:860px;margin:0 auto;padding:20px 16px}
+section{display:none}section.on{display:block}
+.box{background:var(--stp);border:1px solid var(--stpb);border-radius:8px;padding:14px;font-size:.92rem;margin-bottom:12px}
+details{background:var(--card);border:1px solid var(--bd);border-radius:8px;margin-bottom:12px}
+summary{cursor:pointer;padding:14px;font-weight:700;list-style:none;font-family:system-ui,sans-serif}
+summary::-webkit-details-marker{display:none}summary::before{content:'▸ ';color:var(--ac2)}details[open]>summary::before{content:'▾ '}
+.in{padding:0 18px 18px}
+.in p{margin:.5rem 0}.in ul,.in ol{margin:.4rem 0 .4rem 1.2rem;padding:0}.in li{margin:.3rem 0}
+.rule{background:var(--stp);border:2px solid var(--ac2);border-radius:8px;padding:10px;text-align:center;margin:10px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem}td,th{border:1px solid var(--bd);padding:6px 10px;text-align:left}
+.q{background:var(--soft);border:1px solid var(--bd);border-radius:6px;padding:12px;margin-bottom:10px}
+.st{border:1px solid var(--stpb);background:var(--stp);border-radius:6px;padding:10px;margin-top:8px}
+.st.h{background:var(--hint);border-color:var(--hintb)}
+.st b.t{display:block;font-size:.75rem;font-family:system-ui,sans-serif;margin-bottom:3px}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.btn{border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:6px;padding:8px 16px;font-size:.88rem;cursor:pointer}
+.btn.p{background:var(--ac);color:#fff;border-color:var(--ac)}.btn.g{background:#065f46;color:#fff;border-color:#065f46}.btn:disabled{opacity:.4}
+input[type=text]{width:100%;max-width:420px;border:2px solid var(--bd);border-radius:6px;padding:8px 10px;font-size:1rem;background:var(--card);color:var(--tx)}
+input.ok{border-color:var(--okb)}input.no{border-color:var(--badb)}
+.fb{border-radius:6px;padding:10px;margin-top:10px}.fb.ok{background:var(--ok);border:1px solid var(--okb)}.fb.no{background:var(--bad);border:1px solid var(--badb)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px;text-align:center}
+.stats div{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:6px}.stats small{display:block;color:var(--mut);font-size:.72rem}.stats b{font-size:1.2rem;color:var(--ac2)}
+.pill{border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:99px;padding:5px 14px;font-size:.82rem;cursor:pointer}.pill.on{outline:2px solid var(--ac2)}
+.opt{display:block;width:100%;text-align:left;background:var(--card);color:var(--tx);border:2px solid var(--bd);border-radius:6px;padding:10px;margin-top:8px;font-size:1rem;cursor:pointer}
+.opt.ok{border-color:var(--okb);background:var(--ok)}.opt.no{border-color:var(--badb);background:var(--bad)}
+canvas{width:100%;aspect-ratio:3/2;background:#fff;border:1px solid var(--bd);border-radius:6px}
+select{padding:6px;border:1px solid var(--bd);border-radius:6px;background:var(--card);color:var(--tx)}
+input[type=range]{width:100%}
+*:focus-visible{outline:3px solid var(--ac2);outline-offset:2px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+ <h1>Differentiation: The Quotient Rule</h1>
+ <p class="ui">Edexcel A-Level Mathematics (Pure, Year 2) · Learn it, see worked examples, then practise</p>
+ <div class="tools"><button id="tsz">Larger text</button><button id="tdk">Dark mode</button></div>
+</div></header>
+<nav><div class="wrap">
+ <button class="tab on" data-t="learn">Learn it</button><button class="tab" data-t="ex">Worked examples</button><button class="tab" data-t="pr">Practise it</button><button class="tab" data-t="sp">Spot the mistake</button>
+</div></nav>
+ 
+<main>
+<section id="learn" class="on">
+ <div class="box ui"><b>How to use this lesson.</b> Read each card, play with the graph in the last one, then try the worked examples before you practise.</div>
+ <details open><summary>Words you need (in plain English)</summary><div class="in"><ul>
+  <li><b>Differentiate:</b> find the gradient function, a formula that tells you how steep the curve is at any point.</li>
+  <li><b>Derivative, written dy/dx:</b> the answer you get when you differentiate. It is the gradient of the curve.</li>
+  <li><b>Quotient:</b> one expression divided by another, like $\dfrac{e^{2x}}{x}$. We call the expression on top the <b>top</b> (numerator) and the one underneath the <b>bottom</b> (denominator).</li>
+  <li><b>Stationary point:</b> a point where the curve is flat for a moment, so the gradient is $0$.</li>
+  <li><b>Common factor:</b> something that appears in every term, so you can take it outside a bracket.</li></ul></div></details>
+ 
+ <details open><summary>1. When do you need the quotient rule?</summary><div class="in">
+  <p>You need it when <b>one expression containing $x$ is divided by another expression containing $x$</b>. For example:</p>
+  <p>$y=\dfrac{e^{2x}}{x}$ &nbsp;&nbsp; $y=\dfrac{\ln x}{x^2}$ &nbsp;&nbsp; $y=\dfrac{2x+1}{x-3}$</p>
+  <p>You <b>cannot</b> differentiate the top and the bottom separately and divide the answers. The gradient of a fraction is not "gradient of the top divided by gradient of the bottom".</p>
+  <p><b>You do not always need it.</b> If the bottom is just a number, like $\dfrac{x^2+1}{3}$, differentiate normally. If the bottom is a single power of $x$, you can often split the fraction first: $\dfrac{x^2+1}{x}=x+\dfrac{1}{x}$.</p></div></details>
+ 
+ <details open><summary>2. The rule</summary><div class="in">
+  <p>If $y=\dfrac{u}{v}$, where $u$ and $v$ are both expressions in $x$, then</p>
+  <div class="rule">$$\frac{dy}{dx}=\frac{u'v-uv'}{v^2}$$</div>
+  <p>Here $u'$ means "the derivative of $u$" and $v'$ means "the derivative of $v$".</p>
+  <p><b>In words:</b> bottom times the derivative of the top, <b>minus</b> top times the derivative of the bottom, all divided by the bottom squared.</p>
+  <p><b>The order matters.</b> The minus sign means $u'v-uv'$ is not the same as $uv'-u'v$. Start with the derivative of the <b>top</b>.</p>
+  <p><b>Method:</b></p>
+  <ol><li>Pick $u$ (the top) and $v$ (the bottom).</li><li>Differentiate each one to get $u'$ and $v'$.</li><li>Put them into $\dfrac{u'v-uv'}{v^2}$. Use brackets around everything.</li><li>Tidy up the top. Take out any common factor.</li></ol>
+  <p><b>Quick example:</b> $y=\dfrac{x^2}{x+1}$. Here $u=x^2$, $v=x+1$, so $u'=2x$ and $v'=1$.</p>
+  <p>$\dfrac{dy}{dx}=\dfrac{2x(x+1)-x^2(1)}{(x+1)^2}=\dfrac{2x^2+2x-x^2}{(x+1)^2}=\dfrac{x^2+2x}{(x+1)^2}=\dfrac{x(x+2)}{(x+1)^2}$</p>
+  <p>Notice that $v^2$ means the <b>whole</b> bottom squared. You do not differentiate it.</p></div></details>
+ 
+ <details open><summary>3. Derivatives you need to know</summary><div class="in">
+  <table><tr><th>Function</th><th>Derivative</th></tr>
+   <tr><td>$x^n$</td><td>$nx^{n-1}$</td></tr>
+   <tr><td>$e^{kx}$</td><td>$ke^{kx}$</td></tr>
+   <tr><td>$\ln x$</td><td>$\dfrac{1}{x}$</td></tr>
+   <tr><td>$\sin x$</td><td>$\cos x$</td></tr>
+   <tr><td>$\cos x$</td><td>$-\sin x$ (watch the minus sign!)</td></tr></table>
+  <p>Notice $e^{3x}$ gives $3e^{3x}$: the number in front of $x$ comes down as a multiplier.</p></div></details>
+ 
+ <details open><summary>4. Mistakes that lose marks</summary><div class="in"><ul>
+  <li><b>Dividing the derivatives:</b> $\dfrac{u'}{v'}$ is wrong. You need $\dfrac{u'v-uv'}{v^2}$.</li>
+  <li><b>Swapping the order on top:</b> $uv'-u'v$ gives the answer with the wrong sign.</li>
+  <li><b>Forgetting to square the bottom:</b> the bottom of the answer is $v^2$, not $v$.</li>
+  <li><b>Losing a minus sign:</b> when you subtract $uv'$, put it in brackets so the minus applies to <b>every</b> term. For example $-(2x+1)=-2x-1$, not $-2x+1$.</li>
+  <li><b>Not simplifying:</b> take out common factors, especially $e^{kx}$. It makes solving $\frac{dy}{dx}=0$ much easier.</li></ul></div></details>
+ 
+ <details open><summary>5. Try it: check the rule on a graph</summary><div class="in">
+  <p>Pick a quotient, then move the slider. The orange line is the tangent (the straight line that just touches the curve). Its steepness should match the quotient rule answer.</p>
+  <p class="ui"><select id="sbSel" aria-label="Choose a quotient"></select></p>
+  <p class="ui"><label>$x$ = <b id="sbV">1.5</b><input id="sbX" type="range" min="0.3" max="3.5" step="0.1" value="1.5"></label></p>
+  <canvas id="sbC"></canvas>
+  <div id="sbO" class="q ui" style="margin-top:10px"></div></div></details>
+</section>
+ 
+<section id="ex">
+ <div class="box ui">Try each question yourself first. Then press <b>Show next step</b>. Every part gives a hint first, then the full working.</div>
+ <div id="exBox"></div>
+</section>
+ 
+<section id="pr" class="ui">
+ <div class="stats"><div><small>Score</small><b id="sSc">0</b></div><div><small>Streak</small><b id="sSt">0</b></div><div><small>Best streak</small><b id="sBe">0</b></div><div><small>Accuracy</small><b id="sAc">–</b></div></div>
+ <div class="row" style="margin:0 0 12px">
+  <button class="pill on" data-tier="all">All levels</button><button class="pill" data-tier="t1">Fundamental · 1 pt</button><button class="pill" data-tier="t2">Intermediate · 2 pts</button><button class="pill" data-tier="t3">Exam-style · up to 5 pts</button>
+ </div>
+ <p class="ui" style="font-size:.85rem;color:var(--mut)">Type answers like <b>(x*e^(2x)-e^(2x))/x^2</b>. Use brackets round the whole top and the whole bottom. Use brackets: <b>sin(x)</b>, <b>cos(x)</b>, <b>ln(x)</b>, <b>e^(2x)</b>. Any correct form is accepted, simplified or not. There is no limit: press <b>Next question</b> (or Enter) as many times as you like, and new questions are made each time.</p>
+ <div id="qBox" class="q" style="background:var(--card);padding:18px"></div>
+</section>
+ 
+<section id="sp" class="ui">
+ <div class="box">Each student answer below has <b>exactly one mistake</b>. Click the <b>first line that goes wrong</b>.</div>
+ <div id="spBox" class="q" style="background:var(--card);padding:18px"></div>
+</section>
+</main>
+ 
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const rnd=(a,b)=>Math.floor(Math.random()*(b-a+1))+a,pick=a=>a[rnd(0,a.length-1)];
+function ty(el){if(window.renderMathInElement)renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false})}
+const sg=n=>n<0?String(n):'+'+n;
+const lin=(a,b)=>{let s=a===1?'x':a===-1?'-x':a+'x';return b>0?s+'+'+b:b<0?s+b:s};
+const pw=n=>n===1?'x':`x^{${n}}`;
+const F=n=>{if(Number.isInteger(n))return String(n);for(let d=2;d<=12;d++){const k=n*d;if(Math.abs(k-Math.round(k))<1e-9){const r=Math.round(k);return(r<0?'-':'')+'\\frac{'+Math.abs(r)+'}{'+d+'}'}}return String(+n.toFixed(2))};
+function nums(s){s=s.replace(/[−–]/g,'-');const m=s.match(/-?\d*\.?\d+\s*\/\s*-?\d*\.?\d+|-?\d*\.?\d+/g)||[];return m.map(t=>t.includes('/')?t.split('/').reduce((a,b)=>parseFloat(a)/parseFloat(b)):parseFloat(t))}
+ 
+/* ---------- Sandbox ---------- */
+const SB=[
+ {n:'(x²+1) ÷ (x+1)',f:x=>(x*x+1)/(x+1),u:x=>x*x+1,v:x=>x+1,du:x=>2*x,dv:x=>1,t:[String.raw`x^2+1`,String.raw`x+1`,String.raw`2x`,String.raw`1`]},
+ {n:'eˣ ÷ x',f:x=>Math.exp(x)/x,u:Math.exp,v:x=>x,du:Math.exp,dv:x=>1,t:[String.raw`e^{x}`,String.raw`x`,String.raw`e^{x}`,String.raw`1`]},
+ {n:'ln x ÷ x',f:x=>Math.log(x)/x,u:Math.log,v:x=>x,du:x=>1/x,dv:x=>1,t:[String.raw`\ln x`,String.raw`x`,String.raw`\frac{1}{x}`,String.raw`1`]},
+ {n:'sin x ÷ x',f:x=>Math.sin(x)/x,u:Math.sin,v:x=>x,du:Math.cos,dv:x=>1,t:[String.raw`\sin x`,String.raw`x`,String.raw`\cos x`,String.raw`1`]}];
+$('#sbSel').innerHTML=SB.map((s,i)=>`<option value="${i}">${s.n}</option>`).join('');
+function sbDraw(){const s=SB[+$('#sbSel').value],x0=+$('#sbX').value;$('#sbV').textContent=x0;
+ const cv=$('#sbC'),dpr=window.devicePixelRatio||1,W=cv.clientWidth||600,H=cv.clientHeight||400;cv.width=W*dpr;cv.height=H*dpr;const c=cv.getContext('2d');c.scale(dpr,dpr);
+ const xa=0,xb=4,ys=[];for(let i=0;i<=200;i++){const y=s.f(0.2+(xb-0.2)*i/200);if(isFinite(y))ys.push(y)}
+ let y0=Math.min(0,...ys),y1=Math.max(0,...ys);const pad=(y1-y0)*.1||1;y0-=pad;y1+=pad;
+ const X=x=>40+(x-xa)/(xb-xa)*(W-50),Y=y=>H-20-(y-y0)/(y1-y0)*(H-40);
+ c.strokeStyle='#94a3b8';c.lineWidth=1;c.beginPath();c.moveTo(40,Y(0));c.lineTo(W,Y(0));c.moveTo(X(0),0);c.lineTo(X(0),H);c.stroke();
+ c.fillStyle='#64748b';c.font='11px system-ui';for(let i=1;i<=4;i++)c.fillText(i,X(i)-3,Y(0)+13);
+ c.strokeStyle='#4338ca';c.lineWidth=2.4;c.beginPath();let on=0;for(let i=0;i<=300;i++){const x=0.2+(xb-0.2)*i/300,y=s.f(x);if(!isFinite(y))continue;on?c.lineTo(X(x),Y(y)):c.moveTo(X(x),Y(y));on=1}c.stroke();
+ const g=(s.du(x0)*s.v(x0)-s.u(x0)*s.dv(x0))/s.v(x0)**2,yy=s.f(x0);
+ c.strokeStyle='#ea580c';c.lineWidth=2.2;c.beginPath();c.moveTo(X(x0-1),Y(yy-g));c.lineTo(X(x0+1),Y(yy+g));c.stroke();
+ c.fillStyle='#1e1b4b';c.beginPath();c.arc(X(x0),Y(yy),5,0,7);c.fill();
+ const h=1e-5,num=(s.f(x0+h)-s.f(x0-h))/(2*h),f3=v=>v.toFixed(3);
+ $('#sbO').innerHTML=`$u=${s.t[0]}$, &nbsp;$v=${s.t[1]}$, &nbsp;$u'=${s.t[2]}$, &nbsp;$v'=${s.t[3]}$<br>At $x=${x0}$: &nbsp;$u'v=${f3(s.du(x0)*s.v(x0))}$ &nbsp; $uv'=${f3(s.u(x0)*s.dv(x0))}$ &nbsp; $v^2=${f3(s.v(x0)**2)}$<br><b>Quotient rule gradient:</b> $\dfrac{u'v-uv'}{v^2}=${f3(g)}$<br><b>Gradient measured from the graph (zooming in):</b> $${f3(num)}$`;ty($('#sbO'))}
+$('#sbSel').onchange=sbDraw;$('#sbX').oninput=sbDraw;
+ 
+/* ---------- Worked examples ---------- */
+const EX=[
+{t:'Example 1: A first quotient',m:3,q:String.raw`Differentiate $y=\dfrac{2x+1}{x-3}$ using the quotient rule. Simplify your answer. [3 marks]`,s:[
+ ['Hint',String.raw`The top is $u=2x+1$ and the bottom is $v=x-3$. Differentiate each one, then use $\frac{u'v-uv'}{v^2}$.`],
+ ['Step 1: Label and differentiate each part',String.raw`$u=2x+1 \implies u'=2$<br>$v=x-3 \implies v'=1$`],
+ ['Step 2: Put into the rule (use brackets)',String.raw`$\dfrac{dy}{dx}=\dfrac{u'v-uv'}{v^2}=\dfrac{2(x-3)-(2x+1)(1)}{(x-3)^2}$`],
+ ['Step 3: Tidy up the top',String.raw`$2x-6-2x-1=-7$, so <b>$\dfrac{dy}{dx}=\dfrac{-7}{(x-3)^2}$</b>.<br>The minus applied to both terms of $(2x+1)$. The gradient is negative everywhere the curve exists.`]]},
+{t:'Example 2: With an exponential, and a stationary point',m:5,q:String.raw`$y=\dfrac{e^{2x}}{x}$, $x>0$.<br>(a) Find $\dfrac{dy}{dx}$. [3 marks]<br>(b) Find the $x$-coordinate of the stationary point of the curve. [2 marks]`,s:[
+ ['Hint for part (a)',String.raw`$u=e^{2x}$ and $v=x$. Remember the derivative of $e^{2x}$ is $2e^{2x}$ (the $2$ comes down).`],
+ ['Part (a) working',String.raw`$u'=2e^{2x}$ and $v'=1$.<br>$\dfrac{dy}{dx}=\dfrac{2e^{2x}\cdot x-e^{2x}\cdot1}{x^2}=\dfrac{2xe^{2x}-e^{2x}}{x^2}$<br>Take out the common factor $e^{2x}$: <b>$\dfrac{dy}{dx}=\dfrac{e^{2x}(2x-1)}{x^2}$</b>`],
+ ['Hint for part (b)',String.raw`A stationary point is where the gradient is $0$. A fraction is $0$ only when its <b>top</b> is $0$. Note that $e^{2x}$ is never $0$.`],
+ ['Part (b) working',String.raw`$e^{2x}(2x-1)=0$. Since $e^{2x}\ne0$, we need $2x-1=0$.<br><b>$x=\dfrac{1}{2}$</b>`]]},
+{t:'Example 3: Show that the derivative of tan x is sec² x',m:4,q:String.raw`Given that $\tan x=\dfrac{\sin x}{\cos x}$, use the quotient rule to show that $\dfrac{d}{dx}(\tan x)=\sec^2x$. [4 marks]`,s:[
+ ['Hint',String.raw`Take $u=\sin x$ and $v=\cos x$. Be careful: the derivative of $\cos x$ is $-\sin x$. At the end use $\sin^2x+\cos^2x=1$, and remember $\sec x$ means $\frac{1}{\cos x}$.`],
+ ['Step 1: Differentiate each part',String.raw`$u=\sin x \implies u'=\cos x$<br>$v=\cos x \implies v'=-\sin x$`],
+ ['Step 2: Put into the rule',String.raw`$\dfrac{dy}{dx}=\dfrac{\cos x\cdot\cos x-\sin x\cdot(-\sin x)}{\cos^2x}=\dfrac{\cos^2x+\sin^2x}{\cos^2x}$`],
+ ['Step 3: Use $\sin^2x+\cos^2x=1$',String.raw`$\dfrac{dy}{dx}=\dfrac{1}{\cos^2x}=\left(\dfrac{1}{\cos x}\right)^2=\sec^2x$ as required.`]]}];
+ 
+function stepper(host,steps){host.innerHTML=`<div class="steps"></div><div class="row ui"><button class="btn p next">Show next step</button><button class="btn reset">Start again</button></div>`;
+ let n=0;const box=host.querySelector('.steps'),btn=host.querySelector('.next');
+ btn.onclick=()=>{if(n>=steps.length)return;const st=steps[n++],el=document.createElement('div');el.className='st'+(/^Hint/.test(st[0])?' h':'');
+  el.innerHTML=`<b class="t ui">${st[0]}</b>${st[1]}`;box.appendChild(el);ty(el);if(n>=steps.length)btn.disabled=true};
+ host.querySelector('.reset').onclick=()=>{n=0;box.innerHTML='';btn.disabled=false}}
+$('#exBox').innerHTML=EX.map((e,i)=>`<details ${i===0?'open':''}><summary>${e.t} <span style="float:right;font-weight:400;color:var(--mut);font-size:.8rem">${e.m} marks</span></summary><div class="in"><div class="q">${e.q}</div><div class="stepper" data-i="${i}"></div></div></details>`).join('');
+$$('.stepper').forEach(h=>stepper(h,EX[+h.dataset.i].s));
+ 
+/* ---------- Answer checking ---------- */
+function pe(str){let t=str.toLowerCase().replace(/[−–]/g,'-').replace(/\s+/g,'').replace(/\^/g,'**').replace(/sin/g,'@s').replace(/cos/g,'@c').replace(/ln/g,'@l').replace(/e/g,'@e');
+ if(!t||!/^[0-9x+\-*\/().@scle]*$/.test(t))return null;
+ t=t.replace(/(\d|\)|x|@e)(?=x|\(|@)/g,'$1*').replace(/\)(?=\d)/g,')*').replace(/@s/g,'Math.sin').replace(/@c/g,'Math.cos').replace(/@l/g,'Math.log').replace(/@e/g,'Math.E');
+ try{const f=new Function('x','"use strict";return ('+t+')');f(1.3);return f}catch(e){return null}}
+function chk(Pt,str){
+ if(Pt.fn){const f=pe(str);if(!f)return false;return [0.6,1.3,2.2].every(x=>{const a=f(x),b=Pt.fn(x);return isFinite(a)&&isFinite(b)&&Math.abs(a-b)<=1e-6*(1+Math.abs(b))})}
+ const u=nums(str);return u.length>0&&Math.abs(u[0]-Pt.ans)<0.02}
+ 
+/* ---------- Question generators ---------- */
+const GEN={t1:[],t2:[],t3:[]};
+const nz=(a,b)=>{let x;do{x=rnd(a,b)}while(x===0);return x};
+/* building blocks: each factor knows its own derivative */
+const FP=()=>{const n=pick([2,3,4,5]);return{tex:pw(n),f:x=>x**n,df:x=>n*x**(n-1),dtex:`${n}${pw(n-1)}`,note:''}};
+const FL=()=>{const a=pick([2,3,4,5,6]),b=nz(-7,7);return{tex:`(${lin(a,b)})`,f:x=>a*x+b,df:x=>a,dtex:String(a),a,b,note:''}};
+const FE=()=>{const k=pick([2,3,4,5,-2,-3]);return{tex:`e^{${k}x}`,f:x=>Math.exp(k*x),df:x=>k*Math.exp(k*x),dtex:`${k}e^{${k}x}`,k,note:String.raw`The derivative of $e^{${k}x}$ is $${k}e^{${k}x}$: the ${k} comes down.`}};
+const FLN=()=>({tex:String.raw`\ln x`,f:Math.log,df:x=>1/x,dtex:String.raw`\frac{1}{x}`,note:String.raw`The derivative of $\ln x$ is $\frac{1}{x}$.`});
+const FS=()=>{const k=pick([1,1,2,3]),w=k===1?'x':`(${k}x)`;return{tex:String.raw`\sin ${w}`,f:x=>Math.sin(k*x),df:x=>k*Math.cos(k*x),dtex:String.raw`${k===1?'':k}\cos ${w}`,note:k===1?String.raw`The derivative of $\sin x$ is $\cos x$.`:String.raw`The derivative of $\sin(${k}x)$ is $${k}\cos(${k}x)$.`}};
+const FC=()=>{const k=pick([1,1,2,3]),w=k===1?'x':`(${k}x)`;return{tex:String.raw`\cos ${w}`,f:x=>Math.cos(k*x),df:x=>-k*Math.sin(k*x),dtex:String.raw`-${k===1?'':k}\sin ${w}`,note:k===1?String.raw`The derivative of $\cos x$ is $-\sin x$. Watch the sign.`:String.raw`The derivative of $\cos(${k}x)$ is $-${k}\sin(${k}x)$. Watch the sign.`}};
+/* building block: a bottom that is never zero for x > 0 */
+const FLp=()=>{const a=pick([1,2,3,4,5]),b=pick([1,2,3,4,5,6]);return{tex:`(${lin(a,b)})`,f:x=>a*x+b,df:x=>a,dtex:String(a),a,b,note:''}};
+const P=t=>t.startsWith('(')||!/[+-]/.test(t)?t:`(${t})`;
+const Sq=t=>t.startsWith('(')?`${t}^2`:`\\left(${t}\\right)^2`;
+/* quotient of any two factors */
+const mk=(U,V,extra='')=>({q:String.raw`$y=\dfrac{${U.tex}}{${V.tex}}$. Find $\dfrac{dy}{dx}$.`,fn:x=>(U.df(x)*V.f(x)-U.f(x)*V.df(x))/V.f(x)**2,
+ at:String.raw`\frac{${P(U.dtex)}\cdot ${P(V.tex)}-${P(U.tex)}\cdot ${P(V.dtex)}}{${Sq(V.tex)}}`,
+ hint:String.raw`Let $u=${U.tex}$ (the top) and $v=${V.tex}$ (the bottom). Use $\dfrac{u'v-uv'}{v^2}$. ${U.note} ${V.note} ${extra}`,
+ steps:[String.raw`$u=${U.tex} \implies u'=${U.dtex}$ and $v=${V.tex} \implies v'=${V.dtex}$.`,String.raw`$\dfrac{dy}{dx}=\dfrac{u'v-uv'}{v^2}=\dfrac{${P(U.dtex)}\cdot ${P(V.tex)}-${P(U.tex)}\cdot ${P(V.dtex)}}{${Sq(V.tex)}}$. (Tidy up the top, and take out a common factor if you can.)`]});
+ 
+/* Fundamental */
+GEN.t1.push(()=>mk(FL(),FLp(),'Put the subtraction on top in brackets.'));
+GEN.t1.push(()=>mk(FP(),FLp()));
+GEN.t1.push(()=>{const c=pick([1,2,3]),x0=pick([1,2]),v=(2*x0*(x0+c)-x0*x0)/(x0+c)**2;
+ return{q:String.raw`$y=\dfrac{x^2}{x+${c}}$. Find the gradient of the curve when $x=${x0}$. (A fraction is fine.)`,ans:v,at:F(v),
+  hint:String.raw`First find $\frac{dy}{dx}$ using $\frac{u'v-uv'}{v^2}$ with $u=x^2$ and $v=x+${c}$. Then put in $x=${x0}$.`,
+  steps:[String.raw`$\dfrac{dy}{dx}=\dfrac{2x(x+${c})-x^2(1)}{(x+${c})^2}$.`,String.raw`At $x=${x0}$: $\dfrac{${2*x0}(${x0+c})-${x0*x0}}{${(x0+c)**2}}=${F(v)}$.`]}});
+ 
+/* Intermediate */
+GEN.t2.push(()=>mk(pick([FE,FLN,FS,FC])(),FP()));
+GEN.t2.push(()=>mk(pick([FE,FLN,FS,FC])(),FP()));
+GEN.t2.push(()=>mk(pick([FP,FL])(),FE()));
+GEN.t2.push(()=>mk(pick([FS,FC,FLN])(),FLp()));
+ 
+/* Exam-style: two parts */
+GEN.t3.push(()=>{const n=pick([1,2,3]),k=pick([2,3,4]),E=`e^{${k}x}`,xs=n/k;
+ return{q:String.raw`$y=\dfrac{${E}}{${pw(n)}}$, $x>0$.`,hint:String.raw`Part (a): $u=${E}$, $v=${pw(n)}$. Part (b): a fraction is $0$ only when its top is $0$, and $${E}$ is never $0$.`,parts:[
+  {lab:'(a)',txt:String.raw`Find $\dfrac{dy}{dx}$.`,marks:3,fn:x=>(k*Math.exp(k*x)*x**n-Math.exp(k*x)*n*x**(n-1))/x**(2*n),at:String.raw`\frac{${E}(${k}x-${n})}{${pw(n+1)}}`,ms:[{c:'M1',d:"Uses $\\dfrac{u'v-uv'}{v^2}$ with "+String.raw`$u=${E}$, $v=${pw(n)}$.`},{c:'A1',d:String.raw`$u'=${k}${E}$ and $v'=${n===1?'1':n+pw(n-1)}$.`},{c:'A1',d:String.raw`Correct answer, e.g. $\dfrac{${E}(${k}x-${n})}{${pw(n+1)}}$.`}]},
+  {lab:'(b)',txt:String.raw`Find the $x$-coordinate of the stationary point. (A fraction is fine.)`,marks:2,ans:xs,at:F(xs),ms:[{c:'M1',d:String.raw`Sets the top $${E}(${k}x-${n})=0$, so $${k}x-${n}=0$.`},{c:'A1',d:String.raw`$x=${F(xs)}$.`}]}],
+  steps:[String.raw`$\dfrac{dy}{dx}=\dfrac{${k}${E}\cdot ${pw(n)}-${E}\cdot ${n===1?'1':n+pw(n-1)}}{${pw(2*n)}}=\dfrac{${E}(${k}x-${n})}{${pw(n+1)}}$.`,String.raw`Set the top to $0$. $${E}$ is never $0$, so $${k}x-${n}=0 \implies x=${F(xs)}$.`]}});
+GEN.t3.push(()=>{const c=pick([2,3,4,5]),xs=-2*c;
+ return{q:String.raw`$y=\dfrac{x^2}{x+${c}}$, $x\ne-${c}$.`,hint:String.raw`Part (a): $u=x^2$, $v=x+${c}$. Part (b): the gradient is $0$ when the top is $0$. Take out the common factor $x$ first.`,parts:[
+  {lab:'(a)',txt:String.raw`Find $\dfrac{dy}{dx}$.`,marks:3,fn:x=>(2*x*(x+c)-x*x)/(x+c)**2,at:String.raw`\frac{x(x+${2*c})}{(x+${c})^2}`,ms:[{c:'M1',d:"Uses $\\dfrac{u'v-uv'}{v^2}$."},{c:'A1',d:String.raw`$u'=2x$ and $v'=1$.`},{c:'A1',d:String.raw`$\dfrac{x^2+${2*c}x}{(x+${c})^2}$ or equivalent.`}]},
+  {lab:'(b)',txt:String.raw`Find the $x$-coordinate of the stationary point where $x\ne0$.`,marks:2,ans:xs,at:String(xs),ms:[{c:'M1',d:String.raw`Sets $x(x+${2*c})=0$.`},{c:'A1',d:String.raw`$x=${xs}$.`}]}],
+  steps:[String.raw`$\dfrac{dy}{dx}=\dfrac{2x(x+${c})-x^2}{(x+${c})^2}=\dfrac{x^2+${2*c}x}{(x+${c})^2}=\dfrac{x(x+${2*c})}{(x+${c})^2}$.`,String.raw`Set the top to $0$: $x(x+${2*c})=0 \implies x=0$ or $x=${xs}$. So the non-zero value is $x=${xs}$.`]}});
+GEN.t3.push(()=>{const n=pick([1,2,3]),xs=Math.exp(1/n);
+ return{q:String.raw`$y=\dfrac{\ln x}{${pw(n)}}$, $x>0$.`,hint:String.raw`Part (a): $u=\ln x$, $v=${pw(n)}$. Part (b): set the top to $0$ and solve for $\ln x$, then use $e$.`,parts:[
+  {lab:'(a)',txt:String.raw`Find $\dfrac{dy}{dx}$.`,marks:3,fn:x=>(x**(n-1)-n*x**(n-1)*Math.log(x))/x**(2*n),at:String.raw`\frac{1-${n===1?'':n}\ln x}{${pw(n+1)}}`,ms:[{c:'M1',d:"Uses $\\dfrac{u'v-uv'}{v^2}$."},{c:'A1',d:String.raw`$u'=\frac{1}{x}$ and $v'=${n===1?'1':n+pw(n-1)}$.`},{c:'A1',d:String.raw`$\dfrac{1-${n===1?'':n}\ln x}{${pw(n+1)}}$ or equivalent.`}]},
+  {lab:'(b)',txt:String.raw`Find the $x$-coordinate of the stationary point, to 2 decimal places.`,marks:2,ans:xs,at:String(+xs.toFixed(2)),ms:[{c:'M1',d:String.raw`Sets $1-${n===1?'':n}\ln x=0$, so $\ln x=\frac{1}{${n}}$.`},{c:'A1',d:String.raw`$x=e^{1/${n}}\approx${xs.toFixed(2)}$.`}]}],
+  steps:[String.raw`$\dfrac{dy}{dx}=\dfrac{\frac{1}{x}\cdot ${pw(n)}-\ln x\cdot ${n===1?'1':n+pw(n-1)}}{${pw(2*n)}}=\dfrac{1-${n===1?'':n}\ln x}{${pw(n+1)}}$.`,String.raw`Set the top to $0$: $\ln x=\frac{1}{${n}} \implies x=e^{1/${n}}\approx${xs.toFixed(2)}$.`]}});
+ 
+const TIERS={t1:'Fundamental',t2:'Intermediate',t3:'Exam-style'};
+/* ---------- Progress ---------- */
+const SK='quotient-rule-v1';let S={sc:0,st:0,best:0,n:0,ok:0};
+try{const j=JSON.parse(localStorage.getItem(SK)||'null');if(j&&typeof j.sc==='number')S=Object.assign(S,j)}catch(e){}
+function stats(){$('#sSc').textContent=S.sc;$('#sSt').textContent=S.st;$('#sBe').textContent=S.best;$('#sAc').textContent=S.n?Math.round(100*S.ok/S.n)+'%':'–';try{localStorage.setItem(SK,JSON.stringify(S))}catch(e){}}
+function record(right,pts,earn){S.n++;if(right){S.ok++;S.st++;S.best=Math.max(S.best,S.st);S.sc+=pts+(S.st>=3?1:0)}else{S.st=0;S.sc+=earn||0}stats()}
+ 
+/* ---------- Practice UI ---------- */
+let filt='all',Q=null,done=false,qn=0,seen=[];
+function newQ(tier){const t=tier||(filt==='all'?pick(['t1','t2','t3']):filt);let i=0;do{Q=pick(GEN[t])();i++}while(seen.includes(Q.q)&&i<40);seen.push(Q.q);if(seen.length>40)seen.shift();Q.tier=t;done=false;qn++;draw()}
+function draw(){const b=$('#qBox');
+ const inp=Q.parts?Q.parts.map((p,i)=>`<div style="margin-bottom:10px"><label for="pi${i}"><b>${p.lab}</b> ${p.txt} <span style="color:var(--mut);font-size:.85rem">[${p.marks} mark${p.marks>1?'s':''}]</span></label><br><input type="text" id="pi${i}" autocomplete="off" placeholder="Type your answer"></div>`).join(''):`<input type="text" id="inp" autocomplete="off" aria-label="Your answer" placeholder="Type your answer here">`;
+ b.innerHTML=`<div style="margin-bottom:8px"><span class="pill on">${TIERS[Q.tier]}</span> <span style="margin-left:6px;color:var(--mut);font-size:.85rem">Question ${qn}</span></div><div style="font-size:1.1rem;margin-bottom:12px">${Q.q}</div>${inp}
+ <div class="row"><button class="btn p" id="sub">Check my answer</button><button class="btn" id="hint">Give me a hint</button><button class="btn" id="skip">Skip</button><button class="btn g" id="nxt" style="display:none">Next question</button></div><div id="hb"></div><div id="fb"></div>`;
+ ty(b);$('#sub').onclick=mark;$('#skip').onclick=()=>newQ(Q.tier);$('#nxt').onclick=()=>newQ();
+ $('#hint').onclick=()=>{$('#hb').innerHTML=`<div class="st h" style="margin-top:10px"><b class="t">Hint</b>${Q.hint}</div>`;ty($('#hb'))};
+ $$('#qBox input').forEach(i=>i.addEventListener('keydown',e=>{if(e.key==='Enter')(done?newQ():mark())}))}
+function mark(){if(done)return;let right,earn=0,tot;
+ if(Q.parts){Q.parts.forEach((p,i)=>{p.r=chk(p,$('#pi'+i).value);$('#pi'+i).classList.add(p.r?'ok':'no');if(p.r)earn+=p.marks});right=Q.parts.every(p=>p.r);tot=Q.parts.reduce((s,p)=>s+p.marks,0)}
+ else{right=chk(Q,$('#inp').value);$('#inp').classList.add(right?'ok':'no');tot=Q.tier==='t1'?1:2}
+ done=true;record(right,tot,earn);$('#sub').style.display=$('#hint').style.display=$('#skip').style.display='none';$('#nxt').style.display='';
+ const ans=Q.parts?Q.parts.map(p=>`${p.lab} $${p.at}$`).join(' &nbsp; '):`$${Q.at}$`;
+ const sch=Q.parts?`<div class="q" style="margin-top:10px"><b>Mark scheme</b> (you scored ${earn} of ${tot})${Q.parts.map(p=>`<div><b>${p.lab}</b> ${p.ms.map(m=>`<b>${m.c}</b> ${m.d}`).join(' · ')}</div>`).join('')}</div>`:'';
+ $('#fb').innerHTML=`<div class="fb ${right?'ok':'no'}"><b>${right?'Correct! Well done.':'Not quite.'}</b> Answer: ${ans}<br><small>Any equivalent form is accepted.</small></div>${sch}<div class="q" style="margin-top:10px"><b>Full working</b><ol>${Q.steps.map(x=>'<li>'+x+'</li>').join('')}</ol></div>`;ty($('#fb'))}
+$$('.pill[data-tier]').forEach(b=>b.onclick=()=>{filt=b.dataset.tier;$$('.pill[data-tier]').forEach(x=>x.classList.toggle('on',x===b));newQ()});
+ 
+/* ---------- Spot the mistake ---------- */
+const SPOT=[
+()=>{const k=pick([2,3,4,5]),E=`e^{${k}x}`;
+ return{q:String.raw`$y=\dfrac{${E}}{x}$. Find $\dfrac{dy}{dx}$. A student wrote:`,lines:[String.raw`$u=${E}$ and $v=x$.`,String.raw`$u'=${k}${E}$ and $v'=1$.`,String.raw`$\dfrac{dy}{dx}=\dfrac{uv'-u'v}{v^2}=\dfrac{${E}-${k}x${E}}{x^2}$.`],bad:2,why:String.raw`The rule starts with the derivative of the <b>top</b>: $u'v-uv'$. The student wrote it the other way round, so the whole answer has the wrong sign.`,fix:String.raw`$\dfrac{dy}{dx}=\dfrac{${k}x${E}-${E}}{x^2}=\dfrac{${E}(${k}x-1)}{x^2}$.`}},
+()=>({q:String.raw`$y=\dfrac{\sin x}{x}$. Find $\dfrac{dy}{dx}$. A student wrote:`,lines:[String.raw`$u=\sin x$ and $v=x$.`,String.raw`$u'=\cos x$ and $v'=1$.`,String.raw`$\dfrac{dy}{dx}=\dfrac{x\cos x-\sin x}{x}$.`],bad:2,why:String.raw`The bottom of the answer must be $v^2$, the <b>whole bottom squared</b>. The student left it as $x$.`,fix:String.raw`$\dfrac{dy}{dx}=\dfrac{x\cos x-\sin x}{x^2}$.`}),
+()=>{const n=pick([2,3,4]);
+ return{q:String.raw`$y=\dfrac{\ln x}{${pw(n)}}$. Find $\dfrac{dy}{dx}$. A student wrote:`,lines:[String.raw`$u=\ln x$ and $v=${pw(n)}$.`,String.raw`$u'=\frac{1}{x}$ and $v'=${n}${pw(n-1)}$.`,String.raw`$\dfrac{dy}{dx}=\dfrac{u'}{v'}=\dfrac{1/x}{${n}${pw(n-1)}}$.`],bad:2,why:String.raw`The gradient of a fraction is <b>not</b> "derivative of the top divided by derivative of the bottom". The quotient rule is $\dfrac{u'v-uv'}{v^2}$.`,fix:String.raw`$\dfrac{dy}{dx}=\dfrac{\frac{1}{x}\cdot ${pw(n)}-\ln x\cdot ${n}${pw(n-1)}}{${pw(2*n)}}=\dfrac{1-${n}\ln x}{${pw(n+1)}}$.`}},
+()=>{const a=pick([2,3,4]),b=pick([1,2,3,4]),c=pick([1,2,3]);
+ return{q:String.raw`$y=\dfrac{${a}x+${b}}{x+${c}}$. Find $\dfrac{dy}{dx}$. A student wrote:`,lines:[String.raw`$u=${a}x+${b}$ and $v=x+${c}$, so $u'=${a}$ and $v'=1$.`,String.raw`$\dfrac{dy}{dx}=\dfrac{${a}(x+${c})-(${a}x+${b})(1)}{(x+${c})^2}$.`,String.raw`$=\dfrac{${a}x+${a*c}-${a}x+${b}}{(x+${c})^2}=\dfrac{${a*c+b}}{(x+${c})^2}$.`],bad:2,why:String.raw`The minus sign must apply to <b>both</b> terms of $(${a}x+${b})$, so $-(${a}x+${b})=-${a}x-${b}$. The student wrote $-${a}x+${b}$.`,fix:String.raw`$\dfrac{${a}x+${a*c}-${a}x-${b}}{(x+${c})^2}=\dfrac{${a*c-b}}{(x+${c})^2}$.`}}];
+let SP=null,spDone=false;
+function newSpot(){SP=pick(SPOT)();spDone=false;const b=$('#spBox');
+ b.innerHTML=`<div style="font-size:1.1rem;margin-bottom:10px">${SP.q}</div><p style="font-size:.88rem;color:var(--mut)">Click the <b>first line that contains a mistake</b>.</p>${SP.lines.map((l,i)=>`<button class="opt" data-i="${i}"><b style="color:var(--mut)">Line ${i+1}:</b> ${l}</button>`).join('')}<div id="spfb"></div><div class="row"><button class="btn g" id="spn" style="display:none">Try another</button></div>`;ty(b);
+ $$('#spBox .opt').forEach(o=>o.onclick=()=>{if(spDone)return;spDone=true;const i=+o.dataset.i,ok=i===SP.bad;$$('#spBox .opt').forEach((x,j)=>{if(j===SP.bad)x.classList.add('ok');else if(j===i)x.classList.add('no')});record(ok,2,0);
+  $('#spfb').innerHTML=`<div class="fb ${ok?'ok':'no'}"><b>${ok?'Spot on!':'Not that line.'}</b> The mistake is on line ${SP.bad+1}.</div><div class="q" style="margin-top:10px"><p><b>Why it is wrong:</b> ${SP.why}</p><p><b>Correct working:</b> ${SP.fix}</p></div>`;ty($('#spfb'));$('#spn').style.display=''});
+ $('#spn').onclick=newSpot}
+ 
+/* ---------- Tabs and display options ---------- */
+$$('.tab').forEach(t=>t.onclick=()=>{$$('.tab').forEach(x=>x.classList.toggle('on',x===t));$$('section').forEach(s=>s.classList.toggle('on',s.id===t.dataset.t));window.scrollTo(0,0);if(t.dataset.t==='learn')sbDraw()});
+let big=false;$('#tsz').onclick=()=>{big=!big;document.documentElement.style.fontSize=big?'125%':'';$('#tsz').textContent=big?'Smaller text':'Larger text'};
+$('#tdk').onclick=()=>{const d=document.body.classList.toggle('dark');$('#tdk').textContent=d?'Light mode':'Dark mode'};
+$$('details').forEach(d=>d.addEventListener('toggle',()=>{if(d.open&&d.querySelector('#sbC'))sbDraw()}));
+window.addEventListener('resize',()=>{if($('#learn').classList.contains('on'))sbDraw()});
+window.addEventListener('load',()=>{ty(document.body);sbDraw();newQ();newSpot();stats()});
+</script>
+</body>
+</html>
+ 
